@@ -1,5 +1,5 @@
 IceCreamFactory factory = new IceCreamFactory();
-
+boolean canEnter = true;
 void setup(){
   size(900,600);
 }
@@ -11,7 +11,8 @@ void draw(){
   
   factory.renderBigOne();
   
-  if( mousePressed){
+  if( mousePressed && canEnter){
+    canEnter = false;
     if( mouseX > 100 && mouseX < 200){
       if( mouseY > 50 && mouseY < 150){
          factory.setBall(1);
@@ -24,6 +25,10 @@ void draw(){
       }
     }
   }
+  if( !canEnter && !mousePressed ){
+    canEnter = true;
+  }
+  
 }
 
 void keyPressed(){
